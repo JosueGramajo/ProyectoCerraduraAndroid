@@ -6,7 +6,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.MediaType
 import okhttp3.RequestBody
+import umg.arquitectura.proyectocerradura.objects.RoleAndState
 import umg.arquitectura.proyectocerradura.objects.User
+import java.net.SocketTimeoutException
 
 
 object BackendServices{
@@ -33,12 +35,16 @@ object BackendServices{
 
         val call = service.registerUser(body)
 
-        val response = call.execute()
+        try{
+            val response = call.execute()
+            return response.body().string()
+        }catch (se : SocketTimeoutException){
+            return "Timeout exception"
+        }
 
-        return response.body().string()
     }
 
-    fun getRoleAndState(id : String) : Pair<Int, String>{
+    fun getRoleAndState(id : String) : RoleAndState{
         val service = retrofit.create(BackendRequests::class.java)
 
         val body = RequestBody.create(
@@ -50,8 +56,12 @@ object BackendServices{
 
         val response = call.execute()
 
-        val arr = response.body().string().split("&")
+        val json = response.body().string()
 
-        return Pair(arr.get(0).toInt(), arr.get(1))
+        val mapper = ObjectMapper()
+
+        return mapper.readValue(json, RoleAndState::class.java)
+
+
     }
 }

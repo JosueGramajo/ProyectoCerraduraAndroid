@@ -1,28 +1,23 @@
-package umg.arquitectura.proyectocerradura
+package umg.arquitectura.proyectocerradura.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.StrictMode
-import android.provider.Settings
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.*
+import umg.arquitectura.proyectocerradura.R
 import umg.arquitectura.proyectocerradura.fingerprint.FingerprintAuthentication
 import umg.arquitectura.proyectocerradura.objects.User
 import umg.arquitectura.proyectocerradura.retrofit.BackendServices
 import umg.arquitectura.proyectocerradura.utils.SharedPreferences
 
-class RegisterActivity : AppCompatActivity() {
+class RegisterActivity : BaseActivity() {
 
     var fingerprintEnroled = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-
-        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-        StrictMode.setThreadPolicy(policy)
 
         button_request_register.setOnClickListener {
             if (tv_name.text.isNullOrBlank()){
@@ -42,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     fun sendRequest(name : String){
-        val id = Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
+        val id = getBiometricID()
 
         val response = BackendServices.sendUser(User(name, id))
 
@@ -64,14 +59,14 @@ class RegisterActivity : AppCompatActivity() {
         if (requestCode == 300){
             when(resultCode){
                 400 -> {
-                    val errCode = data!!.getStringExtra("result")
-                    toast(errCode)
-
                     image_fingerprint_state.setImageResource(R.drawable.fingerprint_fail)
                     tv_enroll_info.text = "Aun no se ha enrolado ninguna huella digital"
+
+
+                    showAlert("Error", data!!.getStringExtra("result")){}
+
                 }
                 500 -> {
-                    toast("Huella enrolada exitosamente")
                     fingerprintEnroled = true
 
                     image_fingerprint_state.setImageResource(R.drawable.fingerprint_success)

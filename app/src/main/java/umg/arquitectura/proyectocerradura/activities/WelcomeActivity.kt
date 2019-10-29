@@ -1,15 +1,20 @@
-package umg.arquitectura.proyectocerradura
+package umg.arquitectura.proyectocerradura.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 import org.jetbrains.anko.startActivity
+import umg.arquitectura.proyectocerradura.R
 import umg.arquitectura.proyectocerradura.utils.SharedPreferences
 
 class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
+
+        //TODO: REEEEMOOOOOOVEEEEEª!!!!!
+        SharedPreferences.writeSharedPreference(SharedPreferences.enrolledUser, "enrolled", this)
+        //==============
 
         checkScreens()
 
@@ -25,9 +30,7 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     fun checkScreens(){
-        val k = SharedPreferences.getSharedPreference(SharedPreferences.enrolledUser, this)
-
-        if(k.isNotEmpty()){
+        if(SharedPreferences.getSharedPreference(SharedPreferences.enrolledUser, this).isNotEmpty()){
             startActivity<MainActivity>()
         }
     }

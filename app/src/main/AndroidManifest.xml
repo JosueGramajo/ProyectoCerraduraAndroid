@@ -13,13 +13,16 @@
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".MainActivity" />
+
+        <activity android:name=".activities.BaseActivity" />
+
+        <activity android:name=".activities.MainActivity" />
 
         <activity android:name=".fingerprint.FingerprintAuthentication" />
 
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".activities.RegisterActivity" />
 
-        <activity android:name=".WelcomeActivity"
+        <activity android:name=".activities.WelcomeActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
