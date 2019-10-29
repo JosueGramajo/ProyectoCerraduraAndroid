@@ -7,7 +7,7 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 
 
-interface ServoRequest{
+interface ArduinoRequests{
     @GET("arduino/servo/{servo_pin}/{rotation_degree}")
 
     fun getMovieDatils(

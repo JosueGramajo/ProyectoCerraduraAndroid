@@ -45,10 +45,10 @@ class FingerprintAuthentication : AppCompatActivity(){
             override fun onAuthenticationFailed() {
                 super.onAuthenticationFailed()
 
-                val returnIntent = Intent()
+                /*val returnIntent = Intent()
                 returnIntent.putExtra("result", "Autenticacion fallida")
                 setResult(400, returnIntent)
-                finish()
+                finish()*/
 
             }
         })

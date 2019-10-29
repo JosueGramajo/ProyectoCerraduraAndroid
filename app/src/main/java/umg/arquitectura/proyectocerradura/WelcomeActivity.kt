@@ -11,12 +11,24 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        if(SharedPreferences.getSharedPreference(SharedPreferences.enrolledUser, this).isNotEmpty()){
-            startActivity<MainActivity>()
-        }
+        checkScreens()
 
         register_button.setOnClickListener {
             startActivity<RegisterActivity>()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        checkScreens()
+    }
+
+    fun checkScreens(){
+        val k = SharedPreferences.getSharedPreference(SharedPreferences.enrolledUser, this)
+
+        if(k.isNotEmpty()){
+            startActivity<MainActivity>()
         }
     }
 }

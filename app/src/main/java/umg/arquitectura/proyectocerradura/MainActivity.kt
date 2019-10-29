@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
+import umg.arquitectura.proyectocerradura.retrofit.ArduinoServices
+import android.os.StrictMode
+import android.provider.Settings
+import org.jetbrains.anko.alert
 import org.jetbrains.anko.startActivityForResult
 import umg.arquitectura.proyectocerradura.fingerprint.FingerprintAuthentication
-import umg.arquitectura.proyectocerradura.retrofit.RetrofitServices
-import android.os.StrictMode
-import umg.arquitectura.proyectocerradura.utils.SharedPreferences
+import umg.arquitectura.proyectocerradura.retrofit.BackendServices
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,13 +23,32 @@ class MainActivity : AppCompatActivity() {
         val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
         StrictMode.setThreadPolicy(policy)
 
-        login_button.setOnClickListener {
-            //startActivityForResult<FingerprintAuthentication>(300)
+        val id = Settings.Secure.getString(this.contentResolver, Settings.Secure.ANDROID_ID)
+        val d = BackendServices.getRoleAndState(id)
 
-            val response = RetrofitServices.moveServo(80)
+        println(">>>>>>>>>>>>> ${d.first} - ${d.second}")
 
-            toast("${response.first}${response.second}")
+        if (d.first == 2){
+            textView3.text = "GUEST"
+        }else if(d.first == 1){
+            textView3.text = "ADMIN"
         }
+
+        login_button.setOnClickListener {
+            startActivityForResult<FingerprintAuthentication>(300)
+        }
+
+        close_button.setOnClickListener {
+            closeDoor()
+        }
+    }
+
+    fun openDoor(){
+        ArduinoServices.moveServo(90)
+    }
+
+    fun closeDoor(){
+        ArduinoServices.moveServo(200)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -39,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                     toast(errCode)
                 }
                 500 -> {
-                    toast("success!!")
+                    openDoor()
                 }
             }
         }
