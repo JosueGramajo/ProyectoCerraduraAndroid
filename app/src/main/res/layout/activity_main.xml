@@ -116,6 +116,7 @@
 
 
     <LinearLayout
+        android:id="@+id/admin_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -135,7 +136,7 @@
             android:layout_gravity="center"
             android:layout_weight="500"
             android:layout_marginRight="5dp"
-            android:background="@color/colorAccent"
+            android:background="#03A9F4"
             android:orientation="vertical">
 
             <ImageView
@@ -143,7 +144,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_marginTop="50dp"
-                android:src="@drawable/unlock_white" />
+                android:src="@drawable/authorization" />
 
             <Button
                 android:id="@+id/button_pending"
@@ -163,7 +164,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="500"
-            android:background="#673AB7"
+            android:background="#4CAF50"
             android:layout_marginLeft="5dp"
             android:orientation="vertical">
 
@@ -172,7 +173,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_marginTop="50dp"
-                android:src="@drawable/lock_white" />
+                android:src="@drawable/log" />
 
             <Button
                 android:id="@+id/button_statistics"

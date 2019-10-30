@@ -12,10 +12,6 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        //TODO: REEEEMOOOOOOVEEEEEª!!!!!
-        SharedPreferences.writeSharedPreference(SharedPreferences.enrolledUser, "enrolled", this)
-        //==============
-
         checkScreens()
 
         register_button.setOnClickListener {
