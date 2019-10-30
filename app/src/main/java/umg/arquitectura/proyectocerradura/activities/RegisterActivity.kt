@@ -48,12 +48,6 @@ class RegisterActivity : BaseActivity() {
         }
     }
 
-    fun showAlert(title : String, description: String, onAccept : () -> Unit){
-        alert( description, title) {
-            yesButton { onAccept() }
-        }.show()
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 300){

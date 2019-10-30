@@ -6,12 +6,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.toast
 import umg.arquitectura.proyectocerradura.retrofit.ArduinoServices
-import org.jetbrains.anko.startActivityForResult
 import umg.arquitectura.proyectocerradura.R
 import umg.arquitectura.proyectocerradura.fingerprint.FingerprintAuthentication
 import umg.arquitectura.proyectocerradura.retrofit.BackendServices
+import androidx.core.content.res.TypedArrayUtils.getResourceId
+import android.content.res.TypedArray
+import android.graphics.Color
+import org.jetbrains.anko.*
 
 
 class MainActivity : BaseActivity() {
@@ -25,7 +27,8 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        checkUserCurrentState()
+        //checkUserCurrentState()
+
 
         ln_open.setOnClickListener {
             startActivityForResult<FingerprintAuthentication>(300)
@@ -33,6 +36,14 @@ class MainActivity : BaseActivity() {
 
         ln_close.setOnClickListener {
             closeDoor()
+        }
+
+        ln_pending.setOnClickListener {
+            startActivity<AccessManagementActivity>()
+        }
+
+        ln_statistics.setOnClickListener {
+            startActivity<LogsActivity>()
         }
     }
 
@@ -57,13 +68,24 @@ class MainActivity : BaseActivity() {
             image_authorization.setImageResource(R.drawable.authorized_icon)
             tv_authorization.text = "Este usuario se encuentra autorizado para abrir la puerta"
             authorized = true
+        }else if(role.user_state.equals("pending")){
+            image_authorization.setImageResource(R.drawable.pending_icon)
+            tv_authorization.text = "La solicitud de acceso aun ha sido aceptada por el adminsitrador"
+            authorized = false
         }
     }
 
     fun openDoor(){
-        ArduinoServices.setLogData(currentUser, currentState)
+        if(currentState.equals("unauthorized")){
+            showAlert("Error", "Este usuario no se encuentra autorizado para abrir esta puerta") { }
+        }else if(currentState.equals("pending")){
+            showAlert("Error", "La solicitud de acceso aun ha sido aceptada por el adminsitrador") { }
+        }else{
+            ArduinoServices.setLogData(currentUser, currentState)
 
-        ArduinoServices.moveServo(90)
+            ArduinoServices.moveServo(90)
+        }
+
     }
 
     fun closeDoor(){

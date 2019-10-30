@@ -22,6 +22,10 @@
 
         <activity android:name=".activities.RegisterActivity" />
 
+        <activity android:name=".activities.LogsActivity" />
+
+        <activity android:name=".activities.AccessManagementActivity" />
+
         <activity android:name=".activities.WelcomeActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>

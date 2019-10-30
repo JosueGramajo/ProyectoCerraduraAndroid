@@ -56,62 +56,80 @@
         app:layout_goneMarginTop="10dp">
 
         <LinearLayout
-            android:id="@+id/ln_open"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_weight="500"
             android:layout_marginRight="5dp"
-            android:background="@color/colorAccent"
-            android:orientation="vertical">
+            android:background="@color/colorAccent">
 
-            <ImageView
-                android:id="@+id/imageView"
+            <LinearLayout
+                android:id="@+id/ln_open"
                 android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_marginTop="50dp"
-                android:src="@drawable/unlock_white" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ripple"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button_open"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:text="ABRIR PUERTA"
-                android:textColor="#fff"
-                android:textStyle="italic" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/unlock_white" />
+
+                <Button
+                    android:id="@+id/button_open"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:text="ABRIR PUERTA"
+                    android:clickable="false"
+                    android:textColor="#fff"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
         </LinearLayout>
+
 
         <LinearLayout
-            android:id="@+id/ln_close"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="500"
             android:background="#673AB7"
-            android:layout_marginLeft="5dp"
-            android:orientation="vertical">
+            android:layout_weight="500"
+            android:layout_marginLeft="5dp">
 
-            <ImageView
-                android:id="@+id/image_close"
+            <LinearLayout
+                android:id="@+id/ln_close"
                 android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_marginTop="50dp"
-                android:src="@drawable/lock_white" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ripple2"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button_close"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:text="CERRAR PUERTA"
-                android:textColor="#fff"
-                android:textStyle="italic" />
+                <ImageView
+                    android:id="@+id/image_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/lock_white" />
+
+                <Button
+                    android:id="@+id/button_close"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:text="CERRAR PUERTA"
+                    android:clickable="false"
+                    android:textColor="#fff"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
         </LinearLayout>
+
     </LinearLayout>
 
 
@@ -129,63 +147,83 @@
         app:layout_constraintTop_toBottomOf="@+id/open_close_container"
         app:layout_goneMarginTop="10dp">
 
+
         <LinearLayout
-            android:id="@+id/ln_pending"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="500"
-            android:layout_marginRight="5dp"
             android:background="#03A9F4"
-            android:orientation="vertical">
+            android:layout_weight="500"
+            android:layout_marginRight="5dp">
 
-            <ImageView
-                android:id="@+id/imageView4"
+            <LinearLayout
+                android:id="@+id/ln_pending"
                 android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_marginTop="50dp"
-                android:src="@drawable/authorization" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ripple3"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button_pending"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:text="AUTORIZAR ACCESO"
-                android:textColor="#fff"
-                android:textStyle="italic" />
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/authorization" />
+
+                <Button
+                    android:id="@+id/button_pending"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:text="AUTORIZAR ACCESO"
+                    android:clickable="false"
+                    android:textColor="#fff"
+                    android:textStyle="italic" />
+            </LinearLayout>
+
         </LinearLayout>
+
 
         <LinearLayout
-            android:id="@+id/ln_statistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="500"
             android:background="#4CAF50"
-            android:layout_marginLeft="5dp"
-            android:orientation="vertical">
+            android:layout_weight="500"
+            android:layout_marginLeft="5dp">
 
-            <ImageView
-                android:id="@+id/image_statistics"
+            <LinearLayout
+                android:id="@+id/ln_statistics"
                 android:layout_width="wrap_content"
-                android:layout_height="80dp"
-                android:layout_marginTop="50dp"
-                android:src="@drawable/log" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/ripple4"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button_statistics"
-                android:layout_width="match_parent"
-                android:layout_height="65dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@null"
-                android:text="LOGS"
-                android:textColor="#fff"
-                android:textStyle="italic" />
+                <ImageView
+                    android:id="@+id/image_statistics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="50dp"
+                    android:src="@drawable/log" />
+
+                <Button
+                    android:id="@+id/button_statistics"
+                    android:layout_width="match_parent"
+                    android:layout_height="65dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:text="LOGS"
+                    android:clickable="false"
+                    android:textColor="#fff"
+                    android:textStyle="italic" />
+            </LinearLayout>
         </LinearLayout>
+
     </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
