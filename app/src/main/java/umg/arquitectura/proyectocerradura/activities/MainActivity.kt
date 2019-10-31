@@ -27,12 +27,19 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //checkUserCurrentState()
+        checkUserCurrentState()
 
 
         ln_open.setOnClickListener {
-            startActivityForResult<FingerprintAuthentication>(300)
+            if(currentState.equals("unauthorized")){
+                showAlert("Error", "Este usuario no se encuentra autorizado para abrir esta puerta") { }
+            }else if(currentState.equals("pending")){
+                showAlert("Error", "La solicitud de acceso aun ha sido aceptada por el adminsitrador") { }
+            }else{
+                startActivityForResult<FingerprintAuthentication>(300)
+            }
         }
+
 
         ln_close.setOnClickListener {
             closeDoor()
@@ -76,16 +83,9 @@ class MainActivity : BaseActivity() {
     }
 
     fun openDoor(){
-        if(currentState.equals("unauthorized")){
-            showAlert("Error", "Este usuario no se encuentra autorizado para abrir esta puerta") { }
-        }else if(currentState.equals("pending")){
-            showAlert("Error", "La solicitud de acceso aun ha sido aceptada por el adminsitrador") { }
-        }else{
-            ArduinoServices.setLogData(currentUser, currentState)
+        ArduinoServices.setLogData(currentUser, currentState)
 
-            ArduinoServices.moveServo(90)
-        }
-
+        ArduinoServices.moveServo(90)
     }
 
     fun closeDoor(){
