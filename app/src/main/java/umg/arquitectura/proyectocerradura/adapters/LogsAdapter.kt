@@ -3,7 +3,6 @@ package umg.arquitectura.proyectocerradura.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import umg.arquitectura.proyectocerradura.R
@@ -27,7 +26,7 @@ class LogsAdapter(val list: List<LogData>)
             tv_name.text = log.name
 
             val tv_status = itemView.findViewById<TextView>(R.id.tv_log_status)
-            tv_status.text = log.status
+            tv_status.text = log.event_status
 
             val tv_date = itemView.findViewById<TextView>(R.id.tv_log_date)
             tv_date.text = log.date

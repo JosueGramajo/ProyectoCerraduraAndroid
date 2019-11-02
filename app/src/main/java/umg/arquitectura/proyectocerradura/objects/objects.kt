@@ -2,7 +2,7 @@ package umg.arquitectura.proyectocerradura.objects
 
 data class User(
     val name : String,
-    val id : String
+    val biometricID : String
 ){
     constructor() : this("","")
 }
@@ -19,7 +19,7 @@ data class LogData(
     val name : String,
     val time : String,
     val date : String,
-    val status : String
+    val event_status : String
 ){
     constructor() : this("","","","")
 }

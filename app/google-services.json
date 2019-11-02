@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "921720418833",
+    "firebase_url": "https://proyectocerradura.firebaseio.com",
+    "project_id": "proyectocerradura",
+    "storage_bucket": "proyectocerradura.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:921720418833:android:fb638d111b4f1c60bf77b0",
+        "android_client_info": {
+          "package_name": "umg.arquitectura.proyectocerradura"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "921720418833-uq4ce95r6uk63mt0a7v4a67nc96dofcd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzkkREbeTK5aCFYt01m7WP9Ijsv3afW-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "921720418833-uq4ce95r6uk63mt0a7v4a67nc96dofcd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

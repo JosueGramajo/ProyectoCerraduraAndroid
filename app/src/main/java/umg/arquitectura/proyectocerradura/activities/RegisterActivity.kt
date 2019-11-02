@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 import org.jetbrains.anko.*
 import umg.arquitectura.proyectocerradura.R
 import umg.arquitectura.proyectocerradura.fingerprint.FingerprintAuthentication
+import umg.arquitectura.proyectocerradura.objects.LocalUser
 import umg.arquitectura.proyectocerradura.objects.User
 import umg.arquitectura.proyectocerradura.retrofit.BackendServices
 import umg.arquitectura.proyectocerradura.utils.SharedPreferences
